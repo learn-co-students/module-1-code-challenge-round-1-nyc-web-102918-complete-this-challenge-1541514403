@@ -36,12 +36,14 @@ class Restaurant
   end
 
   def average_star_rating
-    total_stars = 0
     #adds the star rating of each review to total_stars
-    reviews.each do |review|
-      total_stars += review.rating
-    end
     #calculates average review rating
+    # total_stars = 0
+    # reviews.each do |review|
+    #   total_stars += review.rating
+    # end
+    # total_stars / reviews.length.to_f
+    total_stars = reviews.inject(0){ |total, review| total + review.rating }
     total_stars / reviews.length.to_f
   end
 
