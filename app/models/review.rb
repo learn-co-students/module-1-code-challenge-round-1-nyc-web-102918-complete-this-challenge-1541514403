@@ -1,25 +1,25 @@
 class Review
   attr_reader :customer, :restaurant, :rating
-  attr_accessor :review_content
+  attr_accessor :content #rating should able to be changed?
 
   @@all = []
 
-
-def initialize(customer, restaurant, rating, review_content)
+def initialize(customer, restaurant, rating, content) # should use content, not review_content.
   @customer = customer
   @restaurant = restaurant
-  @rating = rating
-  @review_content = review_content
-  @all << self
+  @rating = rating # = to the rating method?
+
+  @content = content
+  @@all << self # missing @
 end
 
-  def rating(customer_rate)
-    if customer_rate > 5
-      customer_rate = 5
-    else if customer_rate < 1
-      customer_rate = 1
+  def rating(star_rating)
+    if star_rating > 5
+      star_rating = 5
+    elsif star_rating < 1
+      star_rating = 1
     else
-      customer_rate.to_i
+      star_rating.to_i
   end
 
   def self.all

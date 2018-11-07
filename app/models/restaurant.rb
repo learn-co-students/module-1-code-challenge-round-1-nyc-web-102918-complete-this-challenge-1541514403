@@ -28,7 +28,7 @@ class Restaurant
   end
 
   def reviews
-    Reivew.all.map do |each_review|
+    Reivew.all.select do |each_review|
       each_review.restaurant == self
     end
   end
@@ -45,14 +45,23 @@ class Restaurant
     (totall_rating/counter).to_i
   end
 
-    def longest_review
-      current_restanrant_review = []
-      Review.all.each do |each_review|   #need calculate the review with longest string.
-        if each_review.restaurant == self # locate the given restaurant
-          current_restanrant_review << each_review.review_content  # need to pull out the longest review element                              #compare the reviews within that restaurant
+    def longest_review  #use reviews method
+      longest_review = ""
+      self.reviews.each do |review|
+        if review.length > longest_review.length
+          longest_review = review
+        else
+          longest_review
         end
+        longest_review
       end
-      current_restanrant_review.count # need to calculate the longest element from this array.
+      # current_restanrant_review = []
+      # Review.all.each do |each_review|   #need calculate the review with longest string.
+      #   if each_review.restaurant == self # locate the given restaurant
+      #     current_restanrant_review << each_review.review_content  # need to pull out the longest review element                              #compare the reviews within that restaurant
+      #   end
+      # end
+      # current_restanrant_review.count # need to calculate the longest element from this array.
     end
 
 end
